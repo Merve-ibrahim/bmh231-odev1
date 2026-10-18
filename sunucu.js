@@ -31,7 +31,27 @@ const sunucu = http.createServer((istek, yanit) => {
     `);
     return;
   }
-
+  if (istek.url === "/hakkimda") {
+    yanit.writeHead(200, {
+      "Content-Type": "text/html; charset=utf-8"
+    });
+    yanit.end(`
+      <!DOCTYPE html>
+      <html lang="tr">
+      <head>
+        <meta charset="utf-8">
+        <title>Hakkımda</title>
+      </head>
+      <body>
+        <h1>Hakkımda</h1>
+        <p>Ben Merve İBRAHİM. Bilgisayar Mühendisliği öğrencisiyim.</p>
+        <p>Bu sunucuyu Web Programlama dersi için geliştiriyorum.</p>
+        <a href="/">Ana Sayfa</a>
+      </body>
+      </html>
+    `);
+    return;
+  }
   yanit.writeHead(404, {
     "Content-Type": "text/plain; charset=utf-8"
   });

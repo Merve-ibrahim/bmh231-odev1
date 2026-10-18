@@ -1,4 +1,5 @@
 const http = require("http");
+const dayjs = require("dayjs");
 
 const sunucu = http.createServer((istek, yanit) => {
   console.log(istek.method, istek.url);
@@ -24,8 +25,8 @@ const sunucu = http.createServer((istek, yanit) => {
         <title>Web Programlama</title>
       </head>
       <body>
-        <h1>Merve'nin Web Sunucusu</h1>
-        <a href="/hakkimda">Hakkimda</a>
+<h1>Merve'nin Web Programlama Projesi</h1>      
+  <a href="/hakkimda">Hakkimda</a>
       </body>
       </html>
     `);
@@ -61,6 +62,21 @@ const sunucu = http.createServer((istek, yanit) => {
       kod: "BMH231",
       ad: "Web Programlama",
       gun: "Cuma"
+    }));
+    return;
+  }
+    if (istek.url === "/api/agep") {
+    const bugun = dayjs().startOf("day");
+    const sonTeslim = dayjs("2026-11-01");
+    const kalanGun = sonTeslim.diff(bugun, "day");
+
+    yanit.writeHead(200, {
+      "Content-Type": "application/json; charset=utf-8"
+    });
+
+    yanit.end(JSON.stringify({
+      sonTeslim: sonTeslim.format("DD.MM.YYYY"),
+      kalanGun: kalanGun
     }));
     return;
   }

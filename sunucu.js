@@ -52,6 +52,18 @@ const sunucu = http.createServer((istek, yanit) => {
     `);
     return;
   }
+    if (istek.url === "/api/ders") {
+    yanit.writeHead(200, {
+      "Content-Type": "application/json; charset=utf-8"
+    });
+
+    yanit.end(JSON.stringify({
+      kod: "BMH231",
+      ad: "Web Programlama",
+      gun: "Cuma"
+    }));
+    return;
+  }
   yanit.writeHead(404, {
     "Content-Type": "text/plain; charset=utf-8"
   });

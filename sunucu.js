@@ -16,6 +16,7 @@ const sunucu = http.createServer((istek, yanit) => {
     yanit.writeHead(200, {
       "Content-Type": "text/html; charset=utf-8"
     });
+
     yanit.end(`
       <!DOCTYPE html>
       <html lang="tr">
@@ -24,17 +25,19 @@ const sunucu = http.createServer((istek, yanit) => {
         <title>Web Programlama</title>
       </head>
       <body>
-        <h1>Merve'nin Web Sunucusu</h1>
+        <h1>BMH231 Odev 1</h1>
         <a href="/hakkimda">Hakkimda</a>
       </body>
       </html>
     `);
     return;
   }
+
   if (istek.url === "/hakkimda") {
     yanit.writeHead(200, {
       "Content-Type": "text/html; charset=utf-8"
     });
+
     yanit.end(`
       <!DOCTYPE html>
       <html lang="tr">
@@ -52,7 +55,8 @@ const sunucu = http.createServer((istek, yanit) => {
     `);
     return;
   }
-    if (istek.url === "/api/ders") {
+
+  if (istek.url === "/api/ders") {
     yanit.writeHead(200, {
       "Content-Type": "application/json; charset=utf-8"
     });
@@ -64,6 +68,7 @@ const sunucu = http.createServer((istek, yanit) => {
     }));
     return;
   }
+
   yanit.writeHead(404, {
     "Content-Type": "text/plain; charset=utf-8"
   });
